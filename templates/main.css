@@ -1,0 +1,122 @@
+/* Color Variables */
+body {
+  background-color: #0083a4 !important; }
+
+/* Navbar Section */
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s; }
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s; }
+
+/* for toggle behavior */
+#sidebar.active {
+  margin-left: -17rem; }
+
+#content.active {
+  width: 100%;
+  margin: 0; }
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem; }
+
+  #sidebar.active {
+    margin-left: 0; }
+
+  #content {
+    width: 100%;
+    margin: 0; }
+
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem); } }
+/* End of Navbar Section */
+/* Content Section */
+#content {
+  background-color: #0083a4 !important;
+  color: #f2f2f2 !important;
+  height: 100vh; }
+  #content table {
+    color: #f2f2f2 !important; }
+
+.form-control {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #bababa !important;
+  border-radius: 0;
+  color: #f2f2f2 !important;
+  /* Chrome, Safari, Edge, Opera */
+  /* Firefox */ }
+  .form-control::placeholder {
+    color: #bababa !important; }
+  .form-control:focus {
+    color: #f2f2f2 !important;
+    background-color: #0083a4 !important;
+    border-color: #f2f2f2 !important; }
+  .form-control::-webkit-outer-spin-button, .form-control::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+  .form-control[type=number] {
+    -moz-appearance: textfield; }
+
+/* End of Content Section */
+/* Configuration page Section */
+#current_arrow {
+  color: #f2f2f2 !important;
+  display: table-cell;
+  vertical-align: middle; }
+
+#registerdIPs .row {
+  margin-left: 0;
+  margin-right: 0; }
+
+#rule-info #rule-edit-panel {
+  background-color: #0083a4 !important; }
+
+#cancelModyfiyARule {
+  color: white; }
+
+#cancelButtonRow .form-group {
+  margin-bottom: -2rem; }
+
+/* End of Configuration page Section */
+/* Boostrap Overwrite Section */
+.btn-custom:not(:disabled):not(.disabled).active, .btn-custom:not(:disabled):not(.disabled):active, .show > .btn-custom.dropdown-toggle {
+  color: #f2f2f2 !important;
+  background-color: #0083a4 !important;
+  border-color: #f2f2f2 !important; }
+
+.btn-custom {
+  color: #bababa !important;
+  background-color: #0083a4 !important;
+  border-color: #bababa !important; }
+
+.custom-select {
+  color: #bababa !important;
+  background-color: #0083a4 !important;
+  border-color: #bababa !important;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; }
+  .custom-select:focus {
+    border-color: #f2f2f2 !important; }
+
+/* End of Boostrap Overwrite Section */
+
+/*# sourceMappingURL=main.css.map */

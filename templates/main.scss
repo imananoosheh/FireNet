@@ -1,0 +1,189 @@
+/* Color Variables */
+$light-text-color: #f2f2f2 !important;
+$lighter-text-color: #bababa !important;
+$dark-text-color: #222222 !important;
+$light-bg-color: #a9def3 !important;
+$lighter-bg-color: #caebf8 !important;
+$dark-bg-color: #0083a4 !important;
+
+
+body{
+  background-color: $dark-bg-color;
+}
+
+
+/* Navbar Section */
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}
+
+/* End of Navbar Section */
+
+/* Content Section */
+#content {
+  background-color: $dark-bg-color;
+  color: $light-text-color;
+  height: 100vh;
+
+  table {
+    color: $light-text-color;
+  }
+}
+
+.form-control {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $lighter-text-color;
+  border-radius: 0;
+  color: $light-text-color;
+
+  &::placeholder {
+    color: $lighter-text-color;
+  }
+
+  &:focus {
+    color: $light-text-color;
+    background-color: $dark-bg-color;
+    border-color: $light-text-color;
+
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+
+/* End of Content Section */
+
+
+/* Configuration page Section */
+#current_arrow {
+  color: $light-text-color;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#registerdIPs {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+#rule-info {
+  #rule-edit-panel {
+    background-color: $dark-bg-color;
+  }
+
+}
+
+#cancelModyfiyARule{
+  color: white;
+}
+#cancelButtonRow{
+  .form-group{
+    margin-bottom: -2rem;
+  }
+}
+
+/* End of Configuration page Section */
+
+/* Boostrap Overwrite Section */
+.btn-custom:not(:disabled):not(.disabled).active, .btn-custom:not(:disabled):not(.disabled):active, .show > .btn-custom.dropdown-toggle {
+  color: $light-text-color;
+  background-color: $dark-bg-color;
+  border-color: $light-text-color;
+
+}
+
+.btn-custom {
+  color: $lighter-text-color;
+  background-color: $dark-bg-color;
+  border-color: $lighter-text-color;
+}
+
+.custom-select {
+  color: $lighter-text-color;
+  background-color: $dark-bg-color;
+  border-color: $lighter-text-color;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+
+  &:focus {
+    border-color: $light-text-color;
+  }
+
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+//.dropdown-menu {
+//  color: $light-text-color;
+//  background-color: $dark-bg-color;
+//  border: 1px solid $lighter-text-color;
+//
+//  .dropdown-item {
+//    color: $light-text-color;
+//    &:hover, &:active{
+//      color: $dark-text-color;
+//    }
+//  }
+//}
+
+/* End of Boostrap Overwrite Section */
