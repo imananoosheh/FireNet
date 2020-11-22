@@ -136,9 +136,23 @@ def addIpsetEntry(set_name, entry_value ,comment=""):
 
         
 
-def addInputRule(policy_name, src_address_set, src_port, protocol, action, comment=""):
+def addInputRule(policy_name, address_set, interface, port, protocol, action, is_input):
     
-    out = sb.Popen(['sudo', 'iptables', '-A', 'INPUT', '-m', '--set', src_address_set, '-p', protocol, '--sport', src_port, '-m', 'comment', '--comment', comment ], 
-        shell = False, stderr = sb.PIPE)
-	out.wait()
-	err = out.communicate()
+    if is_input:
+        out = sb.Popen(['sudo', 'iptables', '-A', 'INPUT', '-m', 'set', '--set', address_set, 'src', '-p', protocol, '--sport', 
+            port, '-m', 'comment', '--comment', policy_name, '-j',  action], shell = False, stderr = sb.PIPE)
+        out.wait()
+        err = out.communicate()
+        if err[1]:
+            logger.debug('%s' %err[1])
+            return 6
+
+
+    else:
+        out = sb.Popen(['sudo', 'iptables', '-A', 'OUTPUT', '-m', 'set', '--set', address_set, 'dst', '-p', protocol, '--dport', 
+            port, '-m', 'comment', '--comment', policy_name, '-j', action ], shell = False, stderr = sb.PIPE)
+        out.wait()
+        err = out.communicate()
+        if err[1]:
+            logger.debug('%s' %err[1])
+            return 6
