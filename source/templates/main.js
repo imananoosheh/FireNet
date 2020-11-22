@@ -61,7 +61,13 @@ jQuery(document).ready(function () {
         trigger: 'hover',
         content: 'Cancel / Close',
         delay: {"show": 250, "hide": 100},
-        placement: 'left'
+        placement: 'top'
+    });
+    $('#deleteARuleButton').popover({
+        trigger: 'hover',
+        content: 'Click to DELETE this rule?',
+        delay: {"show": 250, "hide": 100},
+        placement: 'top'
     });
     $(".clickable-row").click(function () {
         window.location = $(this).data("href");
