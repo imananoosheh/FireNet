@@ -78,8 +78,13 @@
                 <div class="col-1">C Level IP Bag</div>
                 <div class="col-1">Accept</div>
                 <div class="col-1">
-                    <button id="editModyfiyARule" type="button" class="btn btn-light rounded-pill shadow-sm pophover" data-title="testtest">
+                    <button id="editModyfiyARule" type="button" class="btn btn-light rounded-pill shadow-sm pophover">
                         <span class="material-icons">create</span>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button id="deleteARuleButton" type="button" class="btn btn-light rounded-pill shadow-sm pophover">
+                        <span class="material-icons">delete</span>
                     </button>
                 </div>
                 <div id="rule-info" class="col-12 my-3 bg-light shadow" id="rule-info">
@@ -100,19 +105,27 @@
                                            autofocus>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" placeholder="S. Interf">
+                                    <select class="custom-select  d-block w-100" id="iOtype" required="">
+                                        <option value="">INPUT (source)</option>
+                                        <option>OUTPUT (destination)</option>
+                                    </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="custom-select  d-block w-100" id="inputAction" required="">
-                                        <option value="">Sour. IP Bag ...</option>
+                                    <input type="text" class="form-control" placeholder="Interface" required="">
+                                </div>
+                                <div class="col-2">
+                                    <select class="custom-select  d-block w-100" id="inputBag" required="">
+                                        <option value="">IP Bag ...</option>
                                         <option>HR IP Bag</option>
                                         <option>Another IP Bag</option>
                                     </select>
                                 </div>
                                 <div class="col-1">
-                                    <input type="number" min="0" max="65535" class="form-control" placeholder="S. Port">
+                                    <input type="number" min="0" max="65535" class="form-control" placeholder="Port"
+                                           required="">
                                 </div>
-                                <div class="col-2">
+                                <!--
+                                                                <div class="col-2">
                                     <input type="text" class="form-control" placeholder="D. Interf">
                                 </div>
                                 <div class="col-2">
@@ -125,6 +138,7 @@
                                 <div class="col-1">
                                     <input type="number" min="0" max="65535" class="form-control" placeholder="D. Port">
                                 </div>
+                                -->
                                 <div class="col-2">
                                     <select class="custom-select  d-block w-100" id="inputAction" required="">
                                         <option value="">ACCEPT</option>
@@ -132,6 +146,7 @@
                                         <option>REJECT</option>
                                     </select>
                                 </div>
+                                <!--
                                 <div class="col-auto mt-4">
                                     <label for="dnatIP">DNAT IP</label>
                                     <input id="dnatIP" class="form-control" type="text" minlength="7" maxlength="15"
@@ -158,11 +173,14 @@
                                         </label>
                                     </div>
                                 </div>
+                                -->
                                 <div class="col-auto offset-1 mt-5">
                                     <button id="createModyfiyARule" type="button"
                                             class="btn btn-light rounded-pill shadow-sm">
                                         <span class="material-icons">done</span><span>Apply</span>
+                                        <!--
                                         <span class="material-icons">done_all</span><span>Applied</span>
+                                        -->
                                     </button>
                                 </div>
                         </form>
