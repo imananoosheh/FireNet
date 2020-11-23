@@ -78,4 +78,19 @@ jQuery(document).ready(function () {
             $('#current_editing').remove();
         }
     });
+
+    $(".bagButton").on('click', function () {
+        var bagid = $(this).data('bagnameid');
+        console.log(bagid);
+        var bag_name = document.getElementById(bagid).innerHTML;
+        console.log(bag_name);
+        appendingHtml = '<form class="d-none" name="bagform" action="/#">' +
+            '<input class="d-none" type="text" id="bagname" name="bagname">' +
+            '<input class="d-none" type="submit" id="bagnamebutton" value="Submit">' +
+            '</form>';
+        $(this).after(appendingHtml);
+        console.log(appendingHtml)
+        document.getElementById('bagname').setAttribute("value",bag_name);
+        $('#bagnamebutton').click();
+    })
 });
