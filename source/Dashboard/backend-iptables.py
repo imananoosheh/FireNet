@@ -91,11 +91,11 @@ def editIpsetEntry(old_set_name, new_set_name, new_value, old_value, new_type="h
 		addIpsetEntry(new_set_name, new_value)
 		logger.debug("Entry in set %s was replaced with %s in set %s" %(old_set_name, new_value, new_set_name))	
 		sb.call('sudo ipset save > /usr/local/etc/ipsetSave.conf', shell = True)
-		return False
+		
 	else:
 		if new_type == "iprange" or new_type == "fqdn":
 			createIpset(new_set_name, "hash:ip")
-		if new_type == "subnet":
+		if new_type == "hash:net":
 			createIpset(new_set_name, "hash:net")
 		if new_type == "mac":
 			createIpset(new_set_name, "hash:mac")
@@ -161,13 +161,18 @@ def addRule(policy_name, address_set, interface, port, protocol, action, is_inpu
 
 
 
-def getAllRules():
+def getAllRules(is_input):
 	rules_list = []
 
-	
-	proc = sb.Popen(['sudo', 'iptables', '-nvL', 'INPUT'], shell=False, stdout=sb.PIPE, stderr = sb.PIPE)
+	if is_input:
+		proc = sb.Popen(['sudo', 'iptables', '-nvL', 'INPUT'], shell=False, stdout=sb.PIPE, stderr = sb.PIPE)
+		
+	else:
+		proc = sb.Popen(['sudo', 'iptables', '-nvL', 'OUTPUT'], shell=False, stdout=sb.PIPE, stderr = sb.PIPE)
+
 	proc.wait()
 	output = proc.communicate()[0]
+
 	splitted_output = output.split('\n')[2: len(output.split('\n')) - 1]
 	for val in splitted_output:
 		rule_dic = {}
@@ -183,7 +188,13 @@ def getAllRules():
 	return rules_list
 
 
+def deleteRule(is_input, index):
+	if is_input:
+		proc = sb.Popen(['sudo', 'iptables', '-D', 'INPUT', str(index)], shell=False, stdout=sb.PIPE, stderr = sb.PIPE)
+	else:
+		proc = sb.Popen(['sudo', 'iptables', '-D', 'OUTPUT', str(index)], shell=False, stdout=sb.PIPE, stderr = sb.PIPE)
 
+	
 
 def main():
 	print(getAllSets())
