@@ -58,16 +58,21 @@
                 <div class="col">IP List</div>
                 <div class="col">Action</div>
             </div>
+
+            {% if bag_list %}
+            {% for bag in bag_list %}
             <div class="row clickable-row" data-href="#">
                 <div class="col-1">1</div>
-                <div class="col" id="bag-n">HR IP Bag</div>
-                <div class="col">4.2.2.4/24, 10.0.2.4/24</div>
+                <div class="col" id="bag-{{ forloop.counter }}">{{ bag.set_name }}</div>
+                <div class="col">{{ bag.addresses.0 }}</div>
                 <div class="col">
-                    <button type="button" data-bagnameid="bag-n" class="bagButton btn btn-light rounded-pill shadow-sm">
+                    <button type="button" data-bagnameid="bag-{{ forloop.counter }}" class="bagButton btn btn-light rounded-pill shadow-sm">
                         <span class="material-icons">create</span>
                     </button>
                 </div>
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
         <div class="col-lg-6">
             <h3 class="font-weight-bold text-uppercase">Bag Name</h3>
@@ -103,7 +108,7 @@
                         /
                     </div>
                     <div class="col-1">
-                        <input type="number" min="0" max="255" class="form-control" placeholder="1-31"  name="ip5">
+                        <input type="number" min="0" max="255" class="form-control" placeholder="1-31" name="ip5">
                     </div>
                     <div class="col-auto">
                         <button id="addIPButton" type="submit" class="btn btn-light rounded-pill shadow-sm">

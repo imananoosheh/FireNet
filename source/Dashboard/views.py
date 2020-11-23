@@ -1,11 +1,11 @@
 from django.shortcuts import render
-
+from . import backend_iptables as back
 
 # Create your views here.
 
 
 def addressbag(request):
-    bag_list = {}
+    bag_list = back.getAllSets()
     return render(request, 'fireNet/index.html', {'bag_list': bag_list})
 
 
