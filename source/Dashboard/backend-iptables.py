@@ -94,12 +94,12 @@ def editIpsetEntry(old_set_name, new_set_name, new_value, old_value, new_type="h
 		return False
 	else:
 		if new_type == "iprange" or new_type == "fqdn":
-			create_unranged_ipset(new_set_name, "hash:ip")
+			createIpset(new_set_name, "hash:ip")
 		if new_type == "subnet":
-			create_unranged_ipset(new_set_name, "hash:net")
+			createIpset(new_set_name, "hash:net")
 		if new_type == "mac":
-			create_unranged_ipset(new_set_name, "hash:mac")
-		add_entry(new_set_name, new_value)
+			createIpset(new_set_name, "hash:mac")
+		addIpsetEntry(new_set_name, new_value)
 	
 	logger.debug("Entry with value of {%s} in set (%s) was replaced with {%s} in set (%s)" %(old_value, old_set_name, new_value, new_set_name))	
 	sb.call('sudo ipset save > /usr/local/etc/ipsetSave.conf', shell = True)
@@ -122,12 +122,7 @@ def createIpset(set_name, set_type="hash:net"):
 
 
 def addIpsetEntry(set_name, entry_value ,comment=""):
-	if comment:
-		comment = "(" + set_name + ") " + comment
-	else:
-		comment =  "(" + set_name + ")"
-
-	out = sb.Popen(['sudo', 'ipset', '-A', set_name, entry_value, '--exist', 'comment', comment ], shell = False, stderr = sb.PIPE)
+	out = sb.Popen(['sudo', 'ipset', '-A', set_name, entry_value, '--exist'], shell = False, stderr = sb.PIPE)
 	out.wait()
 	err = out.communicate()
 	if err[1]:
