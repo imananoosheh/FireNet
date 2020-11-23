@@ -17,19 +17,25 @@ import logging
 
 
 def getAllSets():
+	sets_list = []
 	out = sb.Popen(['sudo', 'ipset', 'list'], shell = False, stdout = sb.PIPE)
 	res, err = out.communicate()
 	if res:
-		sets = res.split("\n")
-		for i in range(0, len(sets)):
-			sets[i] = sets[i][6:]
-	if res:
-		sets.remove('')
-		return sets
-	else:
-		return []
+		num_of_sets = int(len(res.split('Name: ')) - 1)
+		for i in range(1, num_of_sets + 1):
+			sets_dict = {}
+			name = res.split("Name: ")[i].split('\n')[0]
+			sets_dict['set_name'] = name
+			
+			number_of_entires = int(res.split('Number of entries: ')[i].split('\n')[0])
+			addresses_list = []
+			for j in range(number_of_entires):
+				addresses_list.append(res.split('Number of entries: ')[i].split('\n')[2+j])
 
+			sets_dict['addresses'] = addresses_list
+			sets_list.append(sets_dict)
 
+	return sets_list
 
 
 def ipsetLogging(logger):
@@ -185,7 +191,7 @@ def getAllRules():
 
 
 def main():
-	print(getAllRules())
+	print(getAllSets())
 
 
 if __name__ == '__main__':
