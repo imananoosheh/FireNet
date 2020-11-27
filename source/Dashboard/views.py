@@ -19,9 +19,16 @@ def addaddresstobag(request):
         ip4 = request.POST['ip4']
         ip5 = request.POST['ip5']
 
-        # updating the address
+        # check if bagname exists
 
-        # updated ip list and bagname should be sent
+            # check if entered ip exists in the entered bagname
+
+            # if bagname exists and ip doen't, add the ip to the bag
+
+        # create new bag with the bagname && add the ip to the bag
+
+
+        # UPDATE: bag_list && ip_list (list of ips in current baganme)
         ip_list = []
         bagname = ""
         return render(request, 'fireNet/index.html', {'bag_list': bag_list, 'ip_list': ip_list, 'bagname': bagname})

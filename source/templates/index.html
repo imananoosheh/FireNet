@@ -51,7 +51,7 @@
     </button>
     <div class="row">
         <div class="col-lg-6">
-            <h2 class="font-weight-bold text-uppercase">Bags' List</h2>
+            <h2 class="font-weight-bold text-uppercase">List of Bags</h2>
             <div id="bagListHead" class="row my-5 border-bottom border-2">
                 <div class="col-1">#</div>
                 <div class="col">Bag Name</div>
@@ -66,7 +66,8 @@
                 <div class="col" id="bag-{{ forloop.counter }}">{{ bag.set_name }}</div>
                 <div class="col">{{ bag.addresses.0 }}</div>
                 <div class="col">
-                    <button type="button" data-bagnameid="bag-{{ forloop.counter }}" class="bagButton btn btn-light rounded-pill shadow-sm">
+                    <button type="button" data-bagnameid="bag-{{ forloop.counter }}"
+                            class="bagButton btn btn-light rounded-pill shadow-sm">
                         <span class="material-icons">create</span>
                     </button>
                 </div>
@@ -75,7 +76,7 @@
             {% endif %}
         </div>
         <div class="col-lg-6">
-            <h3 class="font-weight-bold text-uppercase">Bag Name</h3>
+            <h3 class="font-weight-bold text-uppercase">Add new Bag</h3>
             <form class="my-5">
                 <div class="form-group form-row">
                     <div class="col-12 form-group">
@@ -118,6 +119,7 @@
                 </div>
             </form>
             <div id="registerdIPs">
+                <h3 class="font-weight-bold text-uppercase">Bag's Detail:</h3>
                 <div id="bagListHead" class="row my-5 mx-0 border-bottom border-2">
                     <div class="col-auto">#</div>
                     <div class="col-auto">IP Address</div>
