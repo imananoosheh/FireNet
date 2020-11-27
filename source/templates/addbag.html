@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="font-weight-bold text-uppercase">Add new Bag</h3>
+        <form class="my-5">
+            <div class="form-group form-row">
+                <div class="col-12 form-group">
+                    <label for="addnewBagName">Bag name:</label>
+                    <input type="text" class="form-control" id="addnewBagName" placeholder="Name of the bag"
+                           autofocus name="bagname">
+                </div>
+                <div class="col-1">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip1">
+                </div>
+                <div class="col-1 text-center">
+                    .
+                </div>
+                <div class="col-1">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip2">
+                </div>
+                <div class="col-1 text-center">
+                    .
+                </div>
+                <div class="col-1">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip3">
+                </div>
+                <div class="col-1 text-center">
+                    .
+                </div>
+                <div class="col-1">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip4">
+                </div>
+                <div class="col-1 text-center">
+                    /
+                </div>
+                <div class="col-1">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="1-31" name="ip5">
+                </div>
+                <div class="col-auto">
+                    <button id="addIPButton" type="submit" class="btn btn-light rounded-pill shadow-sm">
+                        <span class="material-icons">playlist_add</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

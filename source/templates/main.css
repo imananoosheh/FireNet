@@ -56,6 +56,9 @@ body {
   #content table {
     color: #f2f2f2 !important; }
 
+input, select, textarea {
+  color: #bababa !important; }
+
 .form-control {
   background-color: transparent;
   border: 0;
@@ -70,6 +73,8 @@ body {
     color: #f2f2f2 !important;
     background-color: #0083a4 !important;
     border-color: #f2f2f2 !important; }
+  .form-controlinput:focus {
+    color: #bababa !important; }
   .form-control::-webkit-outer-spin-button, .form-control::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; }
@@ -83,9 +88,11 @@ body {
   display: table-cell;
   vertical-align: middle; }
 
-#registerdIPs .row {
-  margin-left: 0;
-  margin-right: 0; }
+#registerdIPs {
+  border-top: 3px solid #fff; }
+  #registerdIPs .row {
+    margin-left: 0;
+    margin-right: 0; }
 
 #rule-info #rule-edit-panel {
   background-color: #0083a4 !important; }

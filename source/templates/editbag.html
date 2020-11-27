@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<div class="row">
+    <div id="registerdIPs" class="my-4 pt-4">
+        <form>
+            <div class="row">
+                <h3 class="col-auto font-weight-bold text-uppercase">Bag's Detail:</h3>
+                <div class="col-auto form-group">
+                    <input type="text" class="form-control" id="editingBagName" placeholder="Name of the bag"
+                           autofocus name="editingBagName">
+                </div>
+            </div>
+            <div id="ipListHead" class="row mt-3 mb-1 mx-0 border-bottom border-2">
+                <div class="col-auto">#</div>
+                <div class="col-auto">IP Address</div>
+                <div class="col-auto">Remove</div>
+            </div>
+            <div class="row">
+                <div class="col-auto">1</div>
+
+                <div class="col-2">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip6">
+                </div>
+                .
+                <div class="col-2">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip7">
+                </div>
+                .
+                <div class="col-2">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip8">
+                </div>
+                .
+                <div class="col-2">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="0-255" name="ip9">
+                </div>
+                <div class="col-1 text-center">
+                    /
+                </div>
+                <div class="col-2">
+                    <input type="number" min="0" max="255" class="form-control" placeholder="1-31" name="ip10">
+                </div>
+
+                <div class="col-auto">
+                    <button id="removeIPButton" type="button" class="btn btn-light rounded-pill shadow-sm">
+                        <span class="material-icons">delete_sweep</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
