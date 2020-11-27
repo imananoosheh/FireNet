@@ -7,7 +7,7 @@ $lighter-bg-color: #caebf8 !important;
 $dark-bg-color: #0083a4 !important;
 
 
-body{
+body {
   background-color: $dark-bg-color;
 }
 
@@ -79,6 +79,10 @@ body{
   }
 }
 
+input, select, textarea {
+  color: $lighter-text-color;
+}
+
 .form-control {
   background-color: transparent;
   border: 0;
@@ -95,6 +99,10 @@ body{
     background-color: $dark-bg-color;
     border-color: $light-text-color;
 
+  }
+
+  &input:focus {
+    color: $lighter-text-color;
   }
 
   /* Chrome, Safari, Edge, Opera */
@@ -122,6 +130,8 @@ body{
 }
 
 #registerdIPs {
+  border-top: 3px solid #fff;
+
   .row {
     margin-left: 0;
     margin-right: 0;
@@ -135,11 +145,12 @@ body{
 
 }
 
-#cancelModyfiyARule{
+#cancelModyfiyARule {
   color: white;
 }
-#cancelButtonRow{
-  .form-group{
+
+#cancelButtonRow {
+  .form-group {
     margin-bottom: -2rem;
   }
 }
