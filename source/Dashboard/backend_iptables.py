@@ -21,6 +21,18 @@ def getAllSets():
 	out = sb.Popen(['sudo', 'ipset', 'list'], shell = False, stdout = sb.PIPE)
 	res, err = out.communicate()
 	if res:
+
+		num_of_sets = len(res.decode().split('Name: ')) - 1
+		for i in range(1, num_of_sets + 1):
+			sets_dict = {}
+			name = res.decode().split("Name: ")[i].split('\n')[0]
+			sets_dict['set_name'] = name
+			
+			number_of_entires = int(res.decode().split('Number of entries: ')[i].split('\n')[0])
+			addresses_list = []
+			for j in range(number_of_entires):
+				addresses_list.append(res.decode().split('Number of entries: ')[i].split('\n')[2+j])
+
 		num_of_sets = int(len(res.split('Name: ')) - 1)
 		for i in range(1, num_of_sets + 1):
 			sets_dict = {}
@@ -31,6 +43,7 @@ def getAllSets():
 			addresses_list = []
 			for j in range(number_of_entires):
 				addresses_list.append(res.split('Number of entries: ')[i].split('\n')[2+j])
+
 
 			sets_dict['addresses'] = addresses_list
 			sets_list.append(sets_dict)
@@ -53,7 +66,11 @@ def ipsetLogging(logger):
 	fhl.setLevel(logging.DEBUG)
 
 
-
+def getOneIpsetEntries(set_name):
+	all_sets = getAllSets()
+	for ipset in all_sets:
+		if set_name == ipset['set_name']:
+			return ipset['addresses']
 
 
 #it deletes a single entry from a special ipset
@@ -106,6 +123,15 @@ def editIpsetEntry(old_set_name, new_set_name, new_value, old_value, new_type="h
 	return True
 
 
+
+def checkExistingIpset(set_name):
+	list_output = sb.Popen(['sudo', 'ipset', 'list'], shell = False, stdout = sb.PIPE)
+	grep_output = sb.Popen(['grep', '-w', set_name], shell = False, stdin = list_output.stdout, stdout = sb.PIPE)
+	result, err = grep_output.communicate()
+	if result:
+		return True
+	else:
+		return False
 
 
 def createIpset(set_name, set_type="hash:net"):
@@ -173,16 +199,30 @@ def getAllRules(is_input):
 	proc.wait()
 	output = proc.communicate()[0]
 
+
+	splitted_output = output.decode().split('\n')[2: len(output.decode().split('\n')) - 1]
+	for val in splitted_output:
+		rule_dic = {}
+		space_list = val.split(' ')
+		space_list = list(filter(None, space_list))
+		print(space_list)
+
 	splitted_output = output.split('\n')[2: len(output.split('\n')) - 1]
 	for val in splitted_output:
 		rule_dic = {}
 		space_list = val.split(' ')
 		space_list = filter(None, space_list)
+
 		rule_dic['target'] = space_list[2]
 		rule_dic['protocol'] = space_list[3]
 		rule_dic['source_interface'] = space_list[5]
 		rule_dic['set_name'] = space_list[10]
+
+		rule_dic['policy_name'] = space_list[15]
+		rule_dic['port'] = space_list[13].split(':')[1]
+
 		rule_dic['policy_name'] = space_list[13]
+
 		rules_list.append(rule_dic)
 
 	return rules_list
