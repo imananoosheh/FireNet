@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="row">
+        <div class="col-lg-12 mb-5">
+            <h2 class="font-weight-bold text-uppercase">INPUT Rule List</h2>
+            <button id="addBagButton" type="button" class="btn btn-light rounded-pill shadow-sm">
+                <span class="material-icons">add</span>
+            </button>
+            <div id="bagListHead" class="row my-5 border-bottom border-2">
+                <div class="col-1">#</div>
+                <div class="col-2">Rule Name</div>
+                <div class="col-1">Interface</div>
+                <div class="col-1">Protocol</div>
+                <div class="col-2">Source IP Bag</div>
+                <div class="col-1">Source Port</div>
+                <div class="col-1">Action</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-1">1</div>
+                <div class="col-2">IT Department Internal Mailing Rule</div>
+                <div class="col-1">ether0</div>
+                <div class="col-1">TCP</div>
+                <div class="col-2">HR Internal IP Bag</div>
+                <div class="col-1">54762</div>
+                <div class="col-1">Accept</div>
+                <div class="col-1">
+                    <button id="editModyfiyARule" type="button" class="btn btn-light rounded-pill shadow-sm pophover">
+                        <span class="material-icons">create</span>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button id="deleteARuleButton" type="button" class="btn btn-light rounded-pill shadow-sm pophover">
+                        <span class="material-icons">delete</span>
+                    </button>
+                </div>
+                <div id="rule-info" class="col-12 my-3 bg-light shadow" id="rule-info">
+                    <div class="container shadow  my-3 py-2" id="rule-edit-panel">
+                        <div class="row float-right" id="cancelButtonRow">
+                            <div class="col-1 form-group">
+                                <button id="cancelModyfiyARule" type="button" class="btn rounded-pill">
+                                    <span class="material-icons">cancel</span>
+                                </button>
+                            </div>
+                        </div>
+                        <form class="my-5">
+                            <div class="form-group form-row">
+                                <div class="col-12 form-group">
+                                    <label for="editingBagName">Rule name</label>
+                                    <input type="text" class="form-control" id="editingBagName"
+                                           placeholder="Name of the rule"
+                                           autofocus>
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" placeholder="Interface" required="">
+                                </div>
+                                <div class="col-2">
+                                    <select class="custom-select  d-block w-100" id="protocol" required="">
+                                        <option value="">TCP</option>
+                                        <option>UDP</option>
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <select class="custom-select  d-block w-100" id="ipBag" required="">
+                                        <option value="">IP Bag ...</option>
+                                        <option>HR IP Bag</option>
+                                        <option>Another IP Bag</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-2">
+                                    <input type="number" min="0" max="65535" class="form-control" placeholder="Port"
+                                           required="">
+                                </div>
+
+                                <div class="col-2">
+                                    <select class="custom-select  d-block w-100" id="inputAction" required="">
+                                        <option value="">ACCEPT</option>
+                                        <option>DROP</option>
+                                        <option>REJECT</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto offset-1 mt-5">
+                                    <button id="createModyfiyARule" type="button"
+                                            class="btn btn-light rounded-pill shadow-sm">
+                                        <span class="material-icons">done</span><span>Apply</span>
+                                    </button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

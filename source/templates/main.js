@@ -69,13 +69,28 @@ jQuery(document).ready(function () {
         delay: {"show": 250, "hide": 100},
         placement: 'top'
     });
-    $(".clickable-row").click(function () {
-        window.location = $(this).data("href");
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $(this).append("<div id='current_editing' class='col-1 d-table text-center'><span id='current_arrow' class='material-icons'>east</span></div>");
-        } else {
-            $('#current_editing').remove();
-        }
-    });
+    // $(".clickable-row").click(function () {
+    //     window.location = $(this).data("href");
+    //     $(this).toggleClass('active');
+    //     if ($(this).hasClass('active')) {
+    //         $(this).append("<div id='current_editing' class='col-1 d-table text-center'><span id='current_arrow' class='material-icons'>east</span></div>");
+    //     } else {
+    //         $('#current_editing').remove();
+    //     }
+    // });
+
+    $(".bagButton").on('click', function () {
+        var bagid = $(this).data('bagnameid');
+        console.log(bagid);
+        var bag_name = document.getElementById(bagid).innerHTML;
+        console.log(bag_name);
+        appendingHtml = '<form class="d-none" name="bagform" action="/#">' +
+            '<input class="d-none" type="text" id="bagname" name="bagname">' +
+            '<input class="d-none" type="submit" id="bagnamebutton" value="Submit">' +
+            '</form>';
+        $(this).after(appendingHtml);
+        console.log(appendingHtml)
+        document.getElementById('bagname').setAttribute("value",bag_name);
+        $('#bagnamebutton').click();
+    })
 });
