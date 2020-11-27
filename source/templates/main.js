@@ -69,15 +69,15 @@ jQuery(document).ready(function () {
         delay: {"show": 250, "hide": 100},
         placement: 'top'
     });
-    $(".clickable-row").click(function () {
-        window.location = $(this).data("href");
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $(this).append("<div id='current_editing' class='col-1 d-table text-center'><span id='current_arrow' class='material-icons'>east</span></div>");
-        } else {
-            $('#current_editing').remove();
-        }
-    });
+    // $(".clickable-row").click(function () {
+    //     window.location = $(this).data("href");
+    //     $(this).toggleClass('active');
+    //     if ($(this).hasClass('active')) {
+    //         $(this).append("<div id='current_editing' class='col-1 d-table text-center'><span id='current_arrow' class='material-icons'>east</span></div>");
+    //     } else {
+    //         $('#current_editing').remove();
+    //     }
+    // });
 
     $(".bagButton").on('click', function () {
         var bagid = $(this).data('bagnameid');
